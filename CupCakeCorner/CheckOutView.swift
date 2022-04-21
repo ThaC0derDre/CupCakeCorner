@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CheckOutView: View {
     @ObservedObject var order: Order
+    @State private var confirmationMessage = ""
+    @State private var showingconfirmation = false
+    
     var body: some View {
         ScrollView{
             VStack{
@@ -24,11 +27,41 @@ struct CheckOutView: View {
                 Text("Total is: \(order.cost, format: .currency(code: "USD"))")
                     .font(.title)
                 
-                Button("Place Order"){}
+                Button("Place Order"){
+                    Task{
+                        await placeOrder()
+                    }
+                }
                 .padding()
             }
             .navigationTitle("Check Out")
             .navigationBarTitleDisplayMode(.inline)
+            .alert("Thank you!", isPresented: $showingconfirmation) {
+                Button("Ok"){}
+            } message: {
+                Text(confirmationMessage)
+            }
+        }
+    }
+    func placeOrder() async {
+        guard let encoded = try? JSONEncoder().encode(order) else {
+            print("Failed encoding order")
+            return
+        }
+        
+        let url = URL(string: "https://reqres.in/api/cupcakes")!
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        
+        do{
+            let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
+            
+            let decodedData = try JSONDecoder().decode(Order.self, from: data)
+            confirmationMessage = "Your order of \(decodedData.amount)x \(Order.types[decodedData.type].lowercased()) cupcakes is on it's way!"
+            showingconfirmation = true
+        }catch{
+            print("Failed to decode data")
         }
     }
 }
