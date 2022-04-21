@@ -11,6 +11,7 @@ struct CheckOutView: View {
     @ObservedObject var order: Order
     @State private var confirmationMesage   = ""
     @State private var showConfirmation     = false
+    @State private var showErrorMessage     = false
     
     var body: some View {
         ScrollView{
@@ -41,6 +42,11 @@ struct CheckOutView: View {
             }message: {
                 Text(confirmationMesage)
             }
+            .alert("Failed network call", isPresented: $showErrorMessage) {
+                Button("Ok"){}
+            }message: {
+                Text("Unable to connect to the server. \nPlease try again.")
+            }
         }
     }
     
@@ -64,6 +70,7 @@ struct CheckOutView: View {
             showConfirmation    = true
         }catch{
             print("Failed to decode data")
+            showErrorMessage = true
         }
     }
 }
