@@ -78,8 +78,8 @@
 			children = (
 				31F37FE227FF78F100EC22CF /* CupCakeCornerApp.swift */,
 				31F37FE427FF78F100EC22CF /* ContentView.swift */,
-				3161F3682810EB7700770CD6 /* CheckOutView.swift */,
 				3161F3662810D08C00770CD6 /* AddressView.swift */,
+				3161F3682810EB7700770CD6 /* CheckOutView.swift */,
 				3161F3642810CA0300770CD6 /* Order.swift */,
 				31F37FE627FF78F100EC22CF /* Assets.xcassets */,
 				31F37FE827FF78F100EC22CF /* Preview Content */,

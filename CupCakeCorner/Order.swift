@@ -9,14 +9,14 @@ import SwiftUI
 
 class Order: ObservableObject {
     
-    static let types                = ["Vanilla", "Chocolate", "Strawberry", "Rainbow"]
-                
+    static let types                = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
+    
     @Published var type             = 0
     @Published var amount           = 3
     
     @Published var specialRequest   = false {
         didSet{
-           if specialRequest == false {
+            if specialRequest == false {
                 addSprinkles    = false
                 extraFrosting   = false
             }
@@ -36,4 +36,23 @@ class Order: ObservableObject {
         }
         return false
     }
+    
+    var cost: Double {
+        // $2 per cake
+        var cost = Double(amount) * 2
+        
+        // extra per level of difficulty
+        cost += (Double(type) / 2)
+        
+        // .50 per cake
+        if addSprinkles{
+            cost += Double(amount) / 2
+        }
+        // $1 per cake
+        if extraFrosting {
+            cost += Double(amount)
+        }
+        return cost
+    }
+    
 }
