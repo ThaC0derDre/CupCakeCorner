@@ -9,8 +9,8 @@ import SwiftUI
 
 struct CheckOutView: View {
     @ObservedObject var order: Order
-    @State private var confirmationMessage = ""
-    @State private var showingconfirmation = false
+    @State private var confirmationMesage   = ""
+    @State private var showConfirmation     = false
     
     var body: some View {
         ScrollView{
@@ -36,30 +36,32 @@ struct CheckOutView: View {
             }
             .navigationTitle("Check Out")
             .navigationBarTitleDisplayMode(.inline)
-            .alert("Thank you!", isPresented: $showingconfirmation) {
+            .alert("Thank you!", isPresented: $showConfirmation) {
                 Button("Ok"){}
-            } message: {
-                Text(confirmationMessage)
+            }message: {
+                Text(confirmationMesage)
             }
         }
     }
+    
+    
     func placeOrder() async {
         guard let encoded = try? JSONEncoder().encode(order) else {
-            print("Failed encoding order")
+            print("Failed to encode data")
             return
         }
         
-        let url = URL(string: "https://reqres.in/api/cupcakes")!
-        var request = URLRequest(url: url)
+        let url             = URL(string: "https://reqres.in/api/cupcakes")!
+        var request         = URLRequest(url: url)
+        request.httpMethod  = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
         
         do{
-            let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
+            let (data, _)       = try await URLSession.shared.upload(for: request, from: encoded)
+            let decodedData     = try JSONDecoder().decode(Order.self, from: data)
             
-            let decodedData = try JSONDecoder().decode(Order.self, from: data)
-            confirmationMessage = "Your order of \(decodedData.amount)x \(Order.types[decodedData.type].lowercased()) cupcakes is on it's way!"
-            showingconfirmation = true
+            confirmationMesage  = "Your order of \(decodedData.amount)x \(Order.types[decodedData.type].lowercased()) cupcakes is on it's way!"
+            showConfirmation    = true
         }catch{
             print("Failed to decode data")
         }
