@@ -13,6 +13,7 @@
 		3161F363280F4D1E00770CD6 /* DisableFormEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3161F362280F4D1E00770CD6 /* DisableFormEx.swift */; };
 		3161F3652810CA0300770CD6 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3161F3642810CA0300770CD6 /* Order.swift */; };
 		3161F3672810D08C00770CD6 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3161F3662810D08C00770CD6 /* AddressView.swift */; };
+		3161F3692810EB7700770CD6 /* CheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3161F3682810EB7700770CD6 /* CheckOutView.swift */; };
 		31F37FE327FF78F100EC22CF /* CupCakeCornerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F37FE227FF78F100EC22CF /* CupCakeCornerApp.swift */; };
 		31F37FE527FF78F100EC22CF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F37FE427FF78F100EC22CF /* ContentView.swift */; };
 		31F37FE727FF78F100EC22CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31F37FE627FF78F100EC22CF /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		3161F362280F4D1E00770CD6 /* DisableFormEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableFormEx.swift; sourceTree = "<group>"; };
 		3161F3642810CA0300770CD6 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		3161F3662810D08C00770CD6 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
+		3161F3682810EB7700770CD6 /* CheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutView.swift; sourceTree = "<group>"; };
 		31F37FDF27FF78F100EC22CF /* CupCakeCorner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CupCakeCorner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F37FE227FF78F100EC22CF /* CupCakeCornerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupCakeCornerApp.swift; sourceTree = "<group>"; };
 		31F37FE427FF78F100EC22CF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,10 +76,11 @@
 		31F37FE127FF78F100EC22CF /* CupCakeCorner */ = {
 			isa = PBXGroup;
 			children = (
+				31F37FE227FF78F100EC22CF /* CupCakeCornerApp.swift */,
 				31F37FE427FF78F100EC22CF /* ContentView.swift */,
+				3161F3682810EB7700770CD6 /* CheckOutView.swift */,
 				3161F3662810D08C00770CD6 /* AddressView.swift */,
 				3161F3642810CA0300770CD6 /* Order.swift */,
-				31F37FE227FF78F100EC22CF /* CupCakeCornerApp.swift */,
 				31F37FE627FF78F100EC22CF /* Assets.xcassets */,
 				31F37FE827FF78F100EC22CF /* Preview Content */,
 				3161F361280F1C9100770CD6 /* HWS Tutorials */,
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3161F35E280E369300770CD6 /* AsyncAwaitURLSEx.swift in Sources */,
+				3161F3692810EB7700770CD6 /* CheckOutView.swift in Sources */,
 				3161F363280F4D1E00770CD6 /* DisableFormEx.swift in Sources */,
 				3161F35C280B877300770CD6 /* CodingKeyEx.swift in Sources */,
 				3161F360280F19D400770CD6 /* AsyncImageEx.swift in Sources */,

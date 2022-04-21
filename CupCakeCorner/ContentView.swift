@@ -19,8 +19,10 @@ struct ContentView: View {
                             Text(Order.types[$0])
                         }
                     }
+                    
                     Stepper("Amount of Cakes: \(order.amount)", value: $order.amount, in: 3...20)
                 }
+                
                 Section{
                     Toggle("Special Requests?", isOn: $order.specialRequest)
                     if order.specialRequest {
@@ -28,6 +30,7 @@ struct ContentView: View {
                         Toggle("Extra Frosting", isOn: $order.extraFrosting)
                     }
                 }
+                
                 Section{
                     NavigationLink{
                     AddressView(order: order)

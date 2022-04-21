@@ -25,5 +25,15 @@ class Order: ObservableObject {
     @Published var addSprinkles     = false
     @Published var extraFrosting    = false
     
+    @Published var name             = ""
+    @Published var address          = ""
+    @Published var city             = ""
+    @Published var zipCode          = ""
     
+    var validAddress: Bool {
+        if name.isEmpty || address.isEmpty || city.isEmpty || zipCode.isEmpty {
+            return true
+        }
+        return false
+    }
 }
